@@ -21,22 +21,11 @@ def searchduck(q):
     datas[count]={}
     datas[count]["title"]=links.text
     datas[count]["description"]=description
-    #datas[count]["url"]=str(urllib.parse.unquote("https:"+links["href"]).split("https://duckduckgo.com/l/?uddg=")[1]).split("&rut=")[0]
     datas[count]["url"]=str(urllib.parse.unquote("https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/"+links["href"]).split("/l/?uddg=")[1]).split("&rut=")[0]
     datas[count]["icon"] = "https:"+result.find("img", {"class": "result__icon__img"}).attrs["src"]
     count+=1
   return datas
     
-def searchyahoo(q):
-  r=requests.get(f"https://search.yahoo.co.jp/search?p={word}&ei=UTF-8",headers={"Mozilla":"mozilla/5.0"})
-  parse=BeautifulSoup(r.text, "html.parser")
-  lists=parse.findAll("a")
-  links=[]
-  for i in range(2,12):
-    if "/search?p=" in lists[i].attrs["href"]:
-      continue
-    links.append(lists[i].attrs["href"])
-  return links
 
 
 
