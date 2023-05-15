@@ -11,8 +11,7 @@ host="localhost:8080"
 proxy={"http":"socks5h://localhost:9050","https":"socks5h://localhost:9050"}
 
 def searchduck(q):
-  r=requests.get("https://duckduckgo.com/html/?q="+q+"&kl=jp-jp",headers={"user-agent":"Mozilla/5.0","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"},proxies=proxy)
-
+  r=requests.get("https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/html/?q="+q+"&kl=jp-jp",headers={"user-agent":"Mozilla/5.0","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"},proxies=proxy)
   parse=BeautifulSoup(r.text, "html.parser")
   datas={}
   count=0
@@ -22,13 +21,22 @@ def searchduck(q):
     datas[count]={}
     datas[count]["title"]=links.text
     datas[count]["description"]=description
-    datas[count]["url"]=str(urllib.parse.unquote("https:"+links["href"]).split("https://duckduckgo.com/l/?uddg=")[1]).split("&rut=")[0]
+    #datas[count]["url"]=str(urllib.parse.unquote("https:"+links["href"]).split("https://duckduckgo.com/l/?uddg=")[1]).split("&rut=")[0]
+    datas[count]["url"]=str(urllib.parse.unquote("https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/"+links["href"]).split("/l/?uddg=")[1]).split("&rut=")[0]
     datas[count]["icon"] = "https:"+result.find("img", {"class": "result__icon__img"}).attrs["src"]
     count+=1
   return datas
     
-
-
+def searchyahoo(q):
+  r=requests.get(f"https://search.yahoo.co.jp/search?p={word}&ei=UTF-8",headers={"Mozilla":"mozilla/5.0"})
+  parse=BeautifulSoup(r.text, "html.parser")
+  lists=parse.findAll("a")
+  links=[]
+  for i in range(2,12):
+    if "/search?p=" in lists[i].attrs["href"]:
+      continue
+    links.append(lists[i].attrs["href"])
+  return links
 
 
 
