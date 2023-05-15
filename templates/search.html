@@ -1,91 +1,52 @@
 <title>{{ q }} - TurtleEngine</title>
-
 <style>
-
 body {
-
   background-color:rgb(32,32,32);
-
   color: white;
-
   font-family:'Arial Black';
-
 }
-
 a {
-
   text-decoration: none;
-
   color: #3366FF;
-
 }
-
 h6 {
-
   color: #a9a9a9;
-
 }
 
 div {
-
   border: 1px solid white;
-
   word-break: break-all;
-
   background-color: rgb(45,45,45);
-
+  margin: 20px;
 }
-
 input{
-
-  border-radius: 100px;
-
+  border-radius: 250px;
   height:50px;
-
-  font-size: 20px;
-
-  width: 300px;
-
+  font-size: 40px;
+  width: 500px;
 }
 
 .buttoninput {
-
   width: 50px;
-
+  height: 50px;
+  font-size: 30;
 }
 
 </style>
-
 <h1>ログ保管無し、Torを使用して検索</h1>
-
 <h3>誰でも利用できます、検索のみ使えます</h3>
-
 <form action="/search" method="GET">
-
   <input type="text" name="q" value="{{ q }}"><input value="🔍" type="submit" class="buttoninput">
-
 </form>
 
 {% for link in searchs %}
-
 <div>
-
   <h6>
-
     <img src="{{ searchs[link]["icon"] }}" class="images" width="40px"><br>
-
     <a href='{{ searchs[link]["url"] }}'>
-
       <h5>{{ searchs[link]["url"] }}</h5>
-
-      <h2>{{ searchs[link]["title"] }}</h2>
-
+      <h1>{{ searchs[link]["title"] }}</h1>
     </a><br>
-
     {{ searchs[link]["description"] }}
-
   </h6></div>
-
-<br>
-
 {% endfor %}

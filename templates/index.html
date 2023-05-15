@@ -1,0 +1,33 @@
+<title>TurtleEngine</title>
+<style>
+body {
+  background-color:rgb(32,32,32);
+  color: white;
+  text-align:center;
+  font-family:'Arial Black';
+  word-break: break-all;
+}
+input{
+  border-radius: 100px;
+  height:50px;
+  position: absolute;
+  top: 10%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-120%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.textinput {
+  font-size: 20px;
+  width: 300px;
+}
+.buttoninput {
+  width: 50px;
+}
+</style>
+<h1>ログ保管無し、Torを使用して検索</h1>
+<h3>誰でも利用できます、検索のみ使えます</h3>
+<form action="/search" method="GET">
+  <div><input type="text" name="q" class="textinput"><input value="🔍" type="submit" class="buttoninput"></div>
+</form>
