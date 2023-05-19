@@ -1,4 +1,4 @@
-import googlesearch,flask,requests,urllib
+import flask,requests,urllib
 from bs4 import BeautifulSoup
 import logging
 
